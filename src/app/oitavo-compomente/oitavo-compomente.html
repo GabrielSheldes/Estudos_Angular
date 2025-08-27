@@ -1,0 +1,17 @@
+<ul>
+    <li *ngFor="let l of lista" [ngClass]="l=='aprovado'? 'fonteverde' : 'fontevermelha' ">{{l}}</li>
+</ul>
+
+@if(media>=7) {<p class="fonteverde">Aprovado(a)</p>}
+@else if (media>= 5) {<p class="fontelaranja">Em Exame</p>}
+@if (media <5) {<p class="fontevermelha">Reprovado</p>}
+
+<!---@for (item of itens; track $index) {}--->
+@for (n of nomes; track $index){<p>{{$index}}-{{n}}</p>}
+
+@switch (linguagen){
+    @case ('HTML') {<P>linguagem de marcação</P>}
+    @case ('CSS') {<P>Linguagem de estilo</P>}
+    @case ('JS') {<p>Linguagem de programação</p>}
+    @default {<p>Linguagem não Encontrada</p>}
+}
