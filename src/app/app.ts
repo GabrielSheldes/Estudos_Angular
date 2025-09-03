@@ -4,10 +4,13 @@ import { QuintoComponete } from "./quinto-componete/quinto-componete";
 import { SextoComponente } from "./sexto-componente/sexto-componente";
 import { SetimoCompomente } from "./setimo-compomente/setimo-compomente";
 import { OitavoCompomente } from "./oitavo-compomente/oitavo-compomente";
+import { NonoComponente } from './nono-componente/nono-componente';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [QuartoComponente, QuintoComponete, SextoComponente, SetimoCompomente, OitavoCompomente],
+  imports: [NonoComponente,],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
