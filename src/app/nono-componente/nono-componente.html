@@ -1,4 +1,4 @@
-<form [FormGroup] = "formulario">
+<form [formGroup]="formulario">
 <!--Nome-->
 @if (formulario.get('nome').hasError('required') && formulario.get('nome').touched){<p class="alert alert-warning"> O campo é obrigatório</p>}
 @if (formulario.get('nome').hasError('minlenght') && formulario.get('nome').touched){<p class="alert alert-warning"> O campo é nome precisa ter pelo menos 3 caracteres</p>}
@@ -6,19 +6,32 @@
 
 <!--Idade-->
 <input type="number" formControlName="idade" placeholder="idade" class="form-control">
+@if (formulario.get('idade').hasError('required') && formulario.get('idade').touched){<p class="alert alert-warning"> O campo é obrigatório</p>}
+@if (formulario.get('idade').hasError('min') && formulario.get('idade').touched){<p class="alert alert-warning"> o Campo idade não aceita numeros menores que 0</p>}
+
+@if (formulario.get('idade').hasError('max') && formulario.get('idade').touched){<p class="alert alert-warning"> o Campo idade não aceita numeros maiores que 120</p>}
 
 <!--Cidade-->
 <input type="text" formControlName="cidade" placeholder="cidade" class="form-control">
+@if (formulario.get('cidade').hasError('required') && formulario.get('cidade').touched){<p class="alert alert-warning"> O campo é obrigatório</p>}
+@if (formulario.get('cidade').hasError('minlength') && formulario.get('cidade').touched){<p class="alert alert-warning"> O campo cidade precisa ter pelo menos 3 caracteres</p>}
 
-<input type="button" value="cadastrar" class="btn btn-primary">
+<!--Botoes-->
+@if (btnCadastrar){
+<input type="button" value="cadastrar" (click)="cadastrar()" class="btn btn-primary" [disabled]="formulario.invalid">
+
+}@else {
 <input type="button" value="Alterar" class="btn btn-primary">
 <input type="button" value="Remover" class="btn btn-primary">
 <input type="button" value="Cancelar" class="btn btn-primary">
-
+}
 </form>
 
 <table class="table">
     <thead>
+        <tr>
+            <th>Selecionar</th>
+        </tr>
         <tr>
             <th>#</th>
             <th>Nome</th>
@@ -28,4 +41,21 @@
         </tr>
     </thead>
     <tbody></tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Selecionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let v of vetor;index as indice">
+            <td> {{indice + 1}}</td>
+            <td>{{v.nome}}</td>
+            <td>{{v.idade}}</td>
+            <td>{{v.cidade}}</td>
+            <td><button class="btn btn-primary">Selecionar</button></td>
+
+        </tr>
+    </tbody>
 </table>
