@@ -16,14 +16,24 @@
 @if (formulario.get('cidade').hasError('required') && formulario.get('cidade').touched){<p class="alert alert-warning"> O campo é obrigatório</p>}
 @if (formulario.get('cidade').hasError('minlength') && formulario.get('cidade').touched){<p class="alert alert-warning"> O campo cidade precisa ter pelo menos 3 caracteres</p>}
 
+<!--Sexo-->
+<div><label>Sexo</label></div>
+<div>
+    <div class="form-check form-check inline">
+    <input type="radio" name="sexo" value="M" formGroupName="sexo" class="form-check-input">
+    <label class="form-check-label">Masculino</label>
+    </div>
+</div>
+
+
 <!--Botoes-->
 @if (btnCadastrar){
 <input type="button" value="cadastrar" (click)="cadastrar()" class="btn btn-primary" [disabled]="formulario.invalid">
 
 }@else {
-<input type="button" value="Alterar" class="btn btn-primary">
-<input type="button" value="Remover" class="btn btn-primary">
-<input type="button" value="Cancelar" class="btn btn-primary">
+<input type="button" value="Alterar" (click)="alterar()" class="btn btn-primary">
+<input type="button" value="Remover" (click)="remover()" class="btn btn-primary">
+<input type="button" value="Cancelar"(click)="cancelar()" class="btn btn-primary">
 }
 </form>
 
@@ -54,7 +64,7 @@
             <td>{{v.nome}}</td>
             <td>{{v.idade}}</td>
             <td>{{v.cidade}}</td>
-            <td><button class="btn btn-primary">Selecionar</button></td>
+            <td><button class="btn btn-primary"(click)="selecionar(indice)">Selecionar</button></td>
 
         </tr>
     </tbody>
