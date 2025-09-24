@@ -16,7 +16,8 @@ export class NonoComponente {
   nome: new FormControl ('',[Validators.required, Validators.minLength(3)]),
   cidade: new FormControl('',[Validators.required, Validators.minLength(3)]),
   idade: new FormControl(null, [Validators.required, Validators.min(0), Validators.max(120)]),
-  sexo: new FormControl('M',[Validators.required])
+  sexo: new FormControl('',[Validators.required]),
+  estado: new FormControl('',[Validators.required, Validators.minLength(2)]),
 });
 
 btnCadastrar: boolean = true;
@@ -42,7 +43,8 @@ selecionar(indice: number){
       nome: this.vetor[indice].nome,
       idade: this.vetor[indice].idade,
       cidade: this.vetor[indice].cidade,
-      sexo: this.vetor[indice].sexo
+      sexo: this.vetor[indice].sexo,
+      estado: this.vetor[indice].estado
     });
     // alterar o estado do botao
     this.btnCadastrar = false;

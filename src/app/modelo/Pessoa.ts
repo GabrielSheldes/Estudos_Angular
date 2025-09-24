@@ -3,4 +3,5 @@ export class Pessoa{
     idade: number;
     cidade: string;
     sexo: string;
+    estado: string;
 }
